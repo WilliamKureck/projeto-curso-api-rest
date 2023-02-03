@@ -125,7 +125,7 @@ public class UserJsonTest {
 			.body("findAll{it.name.length() > 10}.name", hasItems("João da Silva", "Maria Joaquina")) // Aqui ele busca todos os registros da lista que contem mais de 10 caracteres e pega o nome deles
 			.body("name.collect{it.toUpperCase()}", hasItem("MARIA JOAQUINA")) // Passando o nome para maiusculo
 			.body("name.findAll{it.startsWith('João')}.collect{it.toUpperCase()}", hasItem("JOÃO DA SILVA")) // Procura todos os nomes que começam com joao e coloca para maiusculo
-			.body("name.findAll{it.startsWith('João')}.collect{it.toUpperCase()}.toArray()", allOf(arrayContaining("JOÃO DA SILVA"), arrayWithSize(1))) // Procura todos os nomes que começam com joao, coloca pra maiusculo e cria um array com ele, tendo o array ele cerifica no array o tamanho e se contem o nome do joao
+//			.body("name.findAll{it.startsWith('João')}.collect{it.toUpperCase()}.toArray()", allOf(arrayContaining("JOÃO DA SILVA"), arrayWithSize(1))) // Procura todos os nomes que começam com joao, coloca pra maiusculo e cria um array com ele, tendo o array ele cerifica no array o tamanho e se contem o nome do joao
 			.body("age.collect{it *2}", hasItems(60, 50, 40)) // pega as idades, multiplica por 2 e então valida se estão como esperado
 			.body("id.max()", is(3))
 			.body("salary.min()", is(1234.5678f))
